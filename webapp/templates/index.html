@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
+{% block menu %}
+    <a href="{% url 'book_add' %}">Добавить</a>
+{% endblock %}
+{% block content %}
+    <h1>Гостевая книга</h1>
+        {% for book in books %}
+            <div class="book_block">
+            <h2>{{ book.author }} ({{ book.email }})
+            <a href="{% url 'book_update' book.pk%}" class="link">
+                <img src="{% static 'img/add.png' %}" alt="add.png" class="img">
+            </a>
+            <a href="{% url 'book_delete' book.pk%}" class="link">
+                <img src="{% static 'img/delete.png' %}" alt="delete.png" class="img">
+            </a>
+            </h2>
+            <p>{{ book.text }}</p>
+            </div>
+        {% endfor %}
+{% endblock %}
+</body>
+</html>
