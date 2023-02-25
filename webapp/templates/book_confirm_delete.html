@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Удаление{% endblock %}
+{% block menu %}
+    <a href="{% url 'book_add' %}">Добавить</a>
+    <a href="{% url 'book_update' book.pk %}">Обновить</a>
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <h1>Вы точно хотите удалить книгу?</h1>
+        <p>Название: {{ book.author }}</p>
+        <p>Описание: {{ book.text }}</p>
+        <form action="{% url 'confirm_delete' book.pk%}" method="post">
+            {% csrf_token %}
+            <p><input type="submit" value="Да"></p>
+            <button type="submit"><a href="{% url 'index' %}">Нет</a></button>
+        </form>
+    </div>
+{% endblock %}
