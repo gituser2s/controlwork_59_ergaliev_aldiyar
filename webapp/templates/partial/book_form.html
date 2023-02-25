@@ -1,0 +1,15 @@
+{% load django_bootstrap5 %}
+{% csrf_token %}
+<div>
+    {% bootstrap_field form.author %}
+</div>
+<div>
+    {% bootstrap_field form.email %}
+</div>
+<div>
+    {% bootstrap_field form.text %}
+</div>
+<div class="form_row">
+    {% bootstrap_button button_type="submit" content=button_text %}
+</div>
+
